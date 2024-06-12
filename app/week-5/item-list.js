@@ -4,24 +4,20 @@ import items from './items.json';
 
 const ItemList = () => {
   const [sortBy, setSortBy] = useState('name');
-  const [groupedView, setGroupedView] = useState(false); // State to toggle grouped view
-
+  const [groupedView, setGroupedView] = useState(false); 
   // Function to prepare grouped data
   const prepareGroupedItems = () => {
-    // Create a map to group items by category
     const groupedItems = items.reduce((acc, item) => {
       const category = item.category;
       if (!acc[category]) {
         acc[category] = [];
-      }
+      } 
       acc[category].push(item);
       return acc;
     }, {});
 
-    // Sort categories alphabetically
     const sortedCategories = Object.keys(groupedItems).sort();
-
-    // Sort items within each category alphabetically
+ 
     sortedCategories.forEach(category => {
       groupedItems[category].sort((a, b) => a.name.localeCompare(b.name));
     });
@@ -29,7 +25,7 @@ const ItemList = () => {
     return { groupedItems, sortedCategories };
   };
 
-  // Sort items based on sortBy state
+
   const sortedItems = [...items].sort((a, b) => {
     if (sortBy === 'name') {
       return a.name.localeCompare(b.name);
@@ -39,12 +35,12 @@ const ItemList = () => {
     return 0;
   });
 
-  // Toggle grouped view
+
   const toggleGroupedView = () => {
     setGroupedView(!groupedView);
   };
 
-  // Render function for grouped view
+ 
   const renderGroupedItems = () => {
     const { groupedItems, sortedCategories } = prepareGroupedItems();
     return sortedCategories.map(category => (
