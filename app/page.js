@@ -18,6 +18,7 @@ export default function HomePage() {
         <AssignmentLink href="/week-4" title="Week 4 Page" />
         <AssignmentLink href="/week-5" title="Week 5 Page" />
         <AssignmentLink href="/week-6" title="Week 6 Page" />
+        <AssignmentLink href="/week-7" title="Week 7 Page" />
       </ul>
     </main>
   );
