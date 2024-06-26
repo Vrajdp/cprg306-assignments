@@ -1,17 +1,12 @@
-"use client";
+import React from 'react';
+import Item from './item';
 
-import Item from "./item";
-
-const ItemList = ({ items, onItemSelect }) => {
+export default function ItemList({ items, onItemSelect }) {
   return (
-    <div>
-      <ul className="bg-white shadow-md rounded-lg divide-y divide-gray-200">
-        {items.map((item) => (
-          <Item key={item.id} item={item} onSelect={onItemSelect} />
-        ))}
-      </ul>
-    </div>
+    <ul className="bg-white shadow-md rounded-lg overflow-hidden">
+      {items.map(item => (
+        <Item key={item.name} item={item} onSelect={onItemSelect} />
+      ))}
+    </ul>
   );
-};
-
-export default ItemList;
+}
