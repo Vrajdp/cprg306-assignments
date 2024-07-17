@@ -1,23 +1,20 @@
-import { useUserAuth } from "./_utils/auth-context";
+import { useUserAuth } from "../_utils/auth-context";
+import { useRouter } from "next/router";
 
-const Page = () => {
-  const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+const ShoppingListPage = () => {
+  const { user } = useUserAuth();
+  const router = useRouter();
 
   if (!user) {
-    return (
-      <div>
-        <button onClick={gitHubSignIn}>Login with GitHub</button>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <p>Welcome, {user.displayName} ({user.email})</p>
-        <button onClick={firebaseSignOut}>Logout</button>
-        <a href="/week-8/shopping-list">Go to Shopping List</a>
-      </div>
-    );
+    router.push("/week-8");
+    return null;
   }
+
+  return (
+    <div>
+      {/* Your shopping list page content */}
+    </div>
+  );
 };
 
-export default Page;
+export default ShoppingListPage;

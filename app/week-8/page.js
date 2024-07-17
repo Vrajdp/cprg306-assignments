@@ -1,23 +1,23 @@
 import { useUserAuth } from "./_utils/auth-context";
 
-const Page = () => {
+const LandingPage = () => {
   const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
 
   if (!user) {
     return (
       <div>
-        <button onClick={gitHubSignIn}>Login with GitHub</button>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <p>Welcome, {user.displayName} ({user.email})</p>
-        <button onClick={firebaseSignOut}>Logout</button>
-        <a href="/week-8/shopping-list">Go to Shopping List</a>
+        <button onClick={gitHubSignIn}>Sign In with GitHub</button>
       </div>
     );
   }
+
+  return (
+    <div>
+      <p>Welcome, {user.displayName} ({user.email})</p>
+      <button onClick={firebaseSignOut}>Sign Out</button>
+      <a href="/week-8/shopping-list">Go to Shopping List</a>
+    </div>
+  );
 };
 
-export default Page;
+export default LandingPage;
